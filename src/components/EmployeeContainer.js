@@ -30,7 +30,7 @@ class EmployeeContainer extends Component {
         const {employeesTable} = this.state;
 
         if ( this.state.order === 'asc' ) {
-            const sortLastName = employeesTable.sort( (a, b) => (a.name.last > b.name.last) ? 1: -1);
+            const sortLastName = employeesTable.sort( (employee1, employee2) => (employee1.name.last > employee2.name.last) ? 1: -1);
             console.log(sortLastName);
             
             this.setState({
@@ -39,7 +39,7 @@ class EmployeeContainer extends Component {
             });
         }
         else {
-            const sortLastName = employeesTable.sort( (a, b) => (a.name.last > b.name.last) ? -1 : 1);
+            const sortLastName = employeesTable.sort( (employee1, employee2) => (employee1.name.last > employee2.name.last) ? -1 : 1);
             console.log(sortLastName);
             
             this.setState({
