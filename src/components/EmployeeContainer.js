@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import API from '../utils/API';
-// import Container from './Container';
+import Navbar from './Navbar';
 import SearchForm from './SearchForm';
 import DataTable from './DataTable';
 
@@ -12,10 +12,6 @@ class EmployeeContainer extends Component {
         order: ""
     };
 
-    componentDidMount() {
-        this.searchEmployees();
-    }
-
     searchEmployees = () => {
         API.getUsers()
         .then( res => this.setState({
@@ -25,6 +21,10 @@ class EmployeeContainer extends Component {
         .catch(err => console.log(err));
     };
 
+    componentDidMount() {
+        this.searchEmployees();
+    }
+
     // Sort by last name (ascending/descending order) when clicked on the name field 
     sortEmployeeByLastName = () => {
         const {employeesTable} = this.state;
@@ -33,7 +33,8 @@ class EmployeeContainer extends Component {
             const sortLastName = employeesTable.sort( (a, b) => (a.name.last > b.name.last) ? 1: -1);
             console.log(sortLastName);
             
-            this.setState({employeesTable: sortLastName,
+            this.setState({
+                employeesTable: sortLastName,
                 order:'desc'
             });
         }
@@ -62,7 +63,6 @@ class EmployeeContainer extends Component {
        this.setState({ [name]: value })
     }
 
-
     handleFormSubmit = e => {
         e.preventDefault();
         const filteredByState = this.filterEmployees();
@@ -74,19 +74,26 @@ class EmployeeContainer extends Component {
 
     render() {
         return (
-            <div>
-                <SearchForm
-                    value={this.state.search}
-                    handleInputChange={this.handleInputChange}
-                    handleFormSubmit={this.handleFormSubmit}
-                />
+            <div className="container">
+                <Navbar />
+                <div className="row">
+                    <div className="col-6 col-md-6 col-sm-6">
+                        <SearchForm
+                        value={this.state.search}
+                        handleInputChange={this.handleInputChange}
+                        handleFormSubmit={this.handleFormSubmit}
+                        />
+                    </div>
+                    <div className="col-12">
                 {/* <h1>{this.state.order}</h1> */}
-                <DataTable
-                employeesTable={this.state.employeesTable}
-                sortEmployeeByLastName={this.sortEmployeeByLastName}
-                />
+                    <DataTable
+                    employeesTable={this.state.employeesTable}
+                    sortEmployeeByLastName={this.sortEmployeeByLastName}
+                    />
+                    </div>
+                </div>
             </div>
-        )
+        );
     }
 
 }
