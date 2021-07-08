@@ -19,6 +19,8 @@ This is a user/employee directory app that is created with react. It allows the 
 ## Screenshots
 ![alt text](public/images/final-page-1.png)
 ![alt text](public/images/final-page-2.png)
+![alt text](public/images/final-page-3.png)
+![alt text](public/images/final-page-4.png)
 
 
 ## User Story 
