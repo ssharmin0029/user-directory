@@ -12,8 +12,7 @@ function SearchForm(props) {
                 type="text"
                 className="form-control"
                 placeholder="Search by a State"
-                id="employees"
-                list="employee"
+                id="search"
                 />
                 <br />
                 <button type="submit" className="btn btn-primary" onClick={props.handleFormSubmit}>
@@ -21,7 +20,7 @@ function SearchForm(props) {
                 </button>
             </div>
         </form>
-    )
+    );
 }
 
 export default SearchForm;

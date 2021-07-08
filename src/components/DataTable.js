@@ -28,9 +28,7 @@ function DataTable(props) {
                             {employee.location.state}
                         </td>
                         <td className="email">
-                            <a href={employee.email}>
-                                {employee.email}
-                            </a>
+                            {employee.email}
                         </td>
                         <td>
                             { employee.cell}

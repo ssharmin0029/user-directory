@@ -27,7 +27,6 @@ class EmployeeContainer extends Component {
 
     // Sort by last name (ascending/descending order) when clicked on the name field 
     sortEmployeeByLastName = () => {
-        console.log("Hello");
         const {employeesTable} = this.state;
 
         if ( this.state.order === 'asc' ) {
@@ -48,7 +47,8 @@ class EmployeeContainer extends Component {
             });
         }
     }
-
+    
+    // Filter employees when searched by state
     filterEmployees() {
         const {employees, search} = this.state;
         const filterEmployeesByState = employees.filter( employee => {
@@ -65,10 +65,10 @@ class EmployeeContainer extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault();
-        // const filteredByState = this.filterEmployees();
+        const filteredByState = this.filterEmployees();
 
         this.setState({
-             employeesTable: this.filterEmployees()
+             employeesTable: filteredByState
         });
     }
 
@@ -80,6 +80,7 @@ class EmployeeContainer extends Component {
                     handleInputChange={this.handleInputChange}
                     handleFormSubmit={this.handleFormSubmit}
                 />
+                {/* <h1>{this.state.order}</h1> */}
                 <DataTable
                 employeesTable={this.state.employeesTable}
                 sortEmployeeByLastName={this.sortEmployeeByLastName}
@@ -87,7 +88,6 @@ class EmployeeContainer extends Component {
             </div>
         )
     }
-
 
 }
 
