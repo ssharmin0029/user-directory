@@ -53,7 +53,7 @@ class EmployeeContainer extends Component {
     filterEmployees() {
         const {employees, search} = this.state;
         const filterEmployeesByState = employees.filter( employee => {
-            return employee.location.state.toLowerCase().includes( search.toLowerCase() );
+            return employee.location.state.toLowerCase().includes( search.toLowerCase() ) || employee.name.first.toLowerCase().includes( search.toLowerCase() );
         });
         return filterEmployeesByState;
     }
