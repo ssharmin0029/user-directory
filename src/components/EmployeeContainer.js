@@ -49,7 +49,7 @@ class EmployeeContainer extends Component {
         }
     }
     
-    // Filter employees when searched by state
+    // Filter employees when searched by first name or a state
     filterEmployees() {
         const {employees, search} = this.state;
         const filterEmployeesByState = employees.filter( employee => {
